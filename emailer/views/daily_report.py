@@ -1,11 +1,13 @@
 """
 Model view set for daily reports
 """
-from rest_framework import status, permissions, viewsets
+from rest_framework import status, permissions, viewsets, filters
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 
 from emailer.serializers import DailyReportSerializer
 from emailer.models import DailyReport
+from emailer.filters import DailyReportFilter
 
 
 class DailyReportViewSet(viewsets.ModelViewSet):
@@ -14,7 +16,10 @@ class DailyReportViewSet(viewsets.ModelViewSet):
     """
 
     serializer_class = DailyReportSerializer
-    queryset = DailyReport.objects.all()
+    queryset = DailyReport.objects.order_by("id")
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    ordering_fields = ["record_date"]
+    filter_class = DailyReportFilter
     http_method_names = ["get"]
 
     def list(self, request, *args, **kwargs):
