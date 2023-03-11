@@ -49,7 +49,6 @@ DEFAULT_APPS = [
 
 THIRD_PARTY_APPS = [
     "rest_framework",
-    "drf_yasg",
 ]
 
 CREATED_APPS = [
