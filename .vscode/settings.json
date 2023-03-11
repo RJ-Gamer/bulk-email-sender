@@ -1,0 +1,10 @@
+{
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": {
+        "other": "on",
+        "comments": "on",
+        "strings": "on"
+    },
+    "python.formatting.provider": "black",
+    "python.defaultInterpreterPath": "/home/mindbowser/Desktop/bulkmails/env/bin/python3.10",
+}
