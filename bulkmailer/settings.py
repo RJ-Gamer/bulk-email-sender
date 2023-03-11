@@ -13,6 +13,8 @@ from datetime import timedelta
 from decouple import config
 from pathlib import Path
 
+import django
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,6 +27,11 @@ SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 ALLOWED_HOSTS = []
 
@@ -129,6 +136,12 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATIC_ROOT = BASE_DIR / "static"
+
+MEDIA_URL = "media/"
+
+MEDIA_ROOT = BASE_DIR / "media"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -190,6 +203,10 @@ LOGGING = {
             "level": "DEBUG",
         },
         "emailer": {
+            "handlers": ["project_logs", "console_logs"],
+            "level": "DEBUG",
+        },
+        "common": {
             "handlers": ["project_logs", "console_logs"],
             "level": "DEBUG",
         },
