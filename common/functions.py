@@ -100,7 +100,7 @@ def get_valid_invalid_emails_from_csv(file_path):
     return valid_emails, invalid_emails
 
 
-def get_valid_and_invalid_emails_from_excel(file_path):
+def get_valid_invalid_emails_from_excel(file_path):
     """
     Extracts valid and invalid email addresses from an Excel file containing an 'emails' column.
 
@@ -119,7 +119,7 @@ def get_valid_and_invalid_emails_from_excel(file_path):
     - validate_email function from validate_email module
 
     Example usage:
-    valid_emails, invalid_emails = get_valid_and_invalid_emails_from_excel("emails.xlsx")
+    valid_emails, invalid_emails = get_valid_invalid_emails_from_excel("emails.xlsx")
     """
 
     # Load the file into a pandas DataFrame
