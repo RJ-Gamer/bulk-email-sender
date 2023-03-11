@@ -28,5 +28,6 @@ EXCEL_FILE_TYPES = [".xls", ".xlsx"]
 CSV_FILE_TYPES = [".csv"]
 EMAIL_SENT = "Email Sent"
 EMAIL_FAILED = "Email Failed"
+LOGGED_IN = "Login"
 # ============================== OTHERS ============================
 MAX_THREAD_WORKERS = 10
