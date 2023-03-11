@@ -21,6 +21,7 @@ class BulkEmailerViewSet(viewsets.ModelViewSet):
 
     serializer_class = BulkEmailerSerializer
     queryset = BulkEmailer.objects.all()
+    http_method_names = ["post", "get"]
 
     def create(self, request, *args, **kwargs):
         """

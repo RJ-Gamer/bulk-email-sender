@@ -25,7 +25,7 @@ class EmailTemplateViewSet(viewsets.ModelViewSet):
     serializer_class = EmailTemplateSerializer
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [JWTAuthentication]
-    queryset = EmailTemplate.objects.all()
+    queryset = EmailTemplate.objects.order_by("id")
     model = EmailTemplate
 
     def create(self, request, *args, **kwargs):
