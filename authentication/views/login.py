@@ -35,7 +35,7 @@ class LoginViewSet(viewsets.ViewSet):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data.get("user")
         refresh = RefreshToken.for_user(user)
-        log.info(constants.LOG_LOGIN_OK)
+        log.info(constants.LOG_LOGIN_SUCCESS)
         return Response(
             {
                 "message": constants.MSG_SUCCESS.format(constants.LOGGED_IN),
