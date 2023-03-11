@@ -1,10 +1,7 @@
 """
 Email Validator View
 """
-import pandas as pd
-from validate_email import validate_email
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from rest_framework import permissions, status, viewsets
+from rest_framework import status, viewsets
 from rest_framework.response import Response
 from common import constants, functions
 from emailer.serializers import EmailValidatorSerializer
@@ -16,6 +13,7 @@ class EmailValidatorViewSet(viewsets.ViewSet):
     """
 
     serializer_class = EmailValidatorSerializer
+    http_method_names = ["post"]
 
     def create(self, request, *args, **kwargs):
         """
