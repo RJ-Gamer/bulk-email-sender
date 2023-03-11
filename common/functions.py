@@ -8,6 +8,18 @@ import string
 import time
 from validate_email import validate_email
 
+from django.utils import timezone
+
+from emailer.models import DailyReport
+
+
+def get_daily_report_object():
+    today = timezone.now().date()
+    try:
+        return DailyReport.objects.get(record_date=today)
+    except DailyReport.DoesNotExist:
+        return DailyReport.objects.create(record_date=today)
+
 
 def generate_emails(valid_ratio=0.9, num_emails=1000, output_file="emails.csv"):
     """
