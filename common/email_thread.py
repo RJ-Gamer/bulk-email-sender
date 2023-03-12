@@ -14,13 +14,14 @@ class EmailThread:
     Email Thread to send many emails at once
     """
 
-    def __init__(self, subject: str, body: str, from_email=None):
+    def __init__(self, subject: str, body: str, from_email=None, attachments=None):
         """
         initialize email thread
         """
         self.subject = subject
         self.body = body
         self.from_email = from_email
+        self.attachments = attachments
 
     def send_one_email(self, to_email: str):
         """
@@ -36,6 +37,10 @@ class EmailThread:
             to=[to_email],
         )
         email.content_subtype = "html"
+        email.attach_alternative(self.body, "text/html")
+        if self.attachments:
+            for attachment in self.attachments:
+                email.attach_file(attachment)
         try:
             email.send()
             log.info(constants.LOG_EMAIL_SENT.format(to_email))
